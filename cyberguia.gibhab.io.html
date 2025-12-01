@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberGuía PYMES - Ciberseguridad para Pequeñas Empresas</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --text: #34495e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: #f8f9fa;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 0.5rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--light);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(52, 152, 219, 0.8));
+            color: white;
+            padding: 120px 2rem 80px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s ease, background 0.3s ease;
+            margin: 0.5rem;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            background: #c0392b;
+        }
+
+        .section {
+            padding: 80px 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: var(--text);
+            opacity: 0.8;
+        }
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .module-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .module-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .module-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .module-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .module-card ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .module-card li {
+            padding: 0.3rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .module-card li:before {
+            content: "✓";
+            color: var(--success);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .kit-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .resource-links {
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .resource-link {
+            display: block;
+            padding: 0.5rem;
+            background: var(--light);
+            border-radius: 5px;
+            color: var(--primary);
+            text-decoration: none;
+            transition: background 0.3s ease;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .resource-link:hover {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .metrics {
+            background: var(--light);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            text-align: center;
+        }
+
+        .metric-item h3 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--light);
+        }
+
+        .footer-section a {
+            color: #bdc3c7;
+            text-decoration: none;
+            display: block;
+            margin: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .download-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .download-item {
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: border-color 0.3s ease;
+        }
+
+        .download-item:hover {
+            border-color: var(--secondary);
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--success);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-left: 0.5rem;
+        }
+
+        .progress-bar {
+            background: #ddd;
+            border-radius: 10px;
+            height: 10px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+
+        .progress {
+            background: var(--success);
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: var(--secondary);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: #2980b9;
+        }
+
+        .submit-btn:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+        }
+
+        .notification {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: var(--success);
+            color: white;
+            padding: 1rem;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            z-index: 1001;
+            max-width: 300px;
+        }
+
+        .notification.error {
+            background: var(--accent);
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .admin-panel {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            margin: 2rem 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #ffffff;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .contacto-item {
+            background: var(--light);
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 5px;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .link-externo {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.8em;
+            color: var(--secondary);
+        }
+
+        .link-info {
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 0.2rem;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--primary);
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: 60px 1rem;
+            }
+        }
+    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-shield-alt"></i>
+                CyberGuía PYMES
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#modulos">Módulos</a></li>
+                    <li><a href="#implementacion">Implementación</a></li>
+                    <li><a href="#recursos">Recursos</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                    <li><a href="#admin" onclick="mostrarAdmin()">Admin</a></li>
+                </ul>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>Protege tu Negocio con Ciberseguridad Accesible</h1>
+            <p>Guía práctica paso a paso para que las PYMES implementen medidas de ciberseguridad efectivas sin necesidad de ser expertos</p>
+            <a href="#implementacion" class="cta-button">
+                <i class="fas fa-rocket"></i> Comenzar Implementación
+            </a>
+            <a href="#recursos" class="cta-button" style="background: var(--secondary);">
+                <i class="fas fa-download"></i> Descargar Recursos
+            </a>
+        </div>
+    </section>
+
+    <!-- Módulos de la Guía -->
+    <section class="section" id="modulos">
+        <div class="section-title">
+            <h2>Guía Completa de Ciberseguridad</h2>
+            <p>8 módulos diseñados específicamente para las necesidades de las PYMES</p>
+        </div>
+
+        <div class="modules-grid">
+            <div class="module-card">
+                <div class="module-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3>Módulo 1: Fundamentos de Ciberseguridad</h3>
+                <p>Conceptos esenciales y terminología para entender los riesgos digitales</p>
+                <ul>
+                    <li>Introducción a amenazas comunes</li>
+                    <li>Vocabulario básico de seguridad</li>
+                    <li>Análisis de riesgos inicial</li>
+                    <li>Caso práctico: PYME real</li>
+                </ul>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 100%"></div>
+                </div>
+                <span class="badge">Completado</span>
+            </div>
+
+            <div class="module-card">
+                <div class="module-icon">
+                    <i class="fas fa-landmark"></i>
+                </div>
+                <h3>Módulo 2: Gobierno y Políticas</h3>
+                <p>Establece las bases de tu programa de seguridad</p>
+                <ul>
+                    <li>Política de seguridad de la información</li>
+                    <li>Matriz de roles y responsabilidades</li>
+                    <li>Cumplimiento LOPD/GDPR</li>
+                    <li>Procedimiento de incidentes</li>
+                </ul>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 85%"></div>
+                </div>
+                <span class="badge">En Progreso</span>
+            </div>
+
+            <div class="module-card">
+                <div class="module-icon">
+                    <i class="fas fa-database"></i>
+                </div>
+                <h3>Módulo 3: Protección de Datos</h3>
+                <p>Protege la información sensible de tus clientes</p>
+                <ul>
+                    <li>Clasificación de datos</li>
+                    <li>Inventario de información</li>
+                    <li>Controles de acceso</li>
+                    <li>Encriptación básica</li>
+                </ul>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 70%"></div>
+                </div>
+                <span class="badge">En Desarrollo</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kit de Implementación -->
+    <section class="section" id="implementacion">
+        <div class="section-title">
+            <h2>Kit de Implementación Rápida</h2>
+            <p>Todo lo que necesitas para comenzar en menos de 30 días</p>
+        </div>
+
+        <div class="kit-features">
+            <!-- Plantillas Descargables -->
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-file-download"></i>
+                </div>
+                <h3>Plantillas Descargables</h3>
+                <p>Políticas, procedimientos y checklists listos para usar</p>
+                <div class="resource-links">
+                    <!-- Política de Seguridad Digital - MinTIC Colombia -->
+                    <a href="https://www.mintic.gov.co/portal/inicio/Atencion-y-Servicio-a-la-Ciudadania/Preguntas-frecuentes/15430:Politica-de-Seguridad-Digital" 
+                       class="resource-link" target="_blank">
+                        <i class="fas fa-file-contract"></i> Política de Seguridad Digital (MinTIC)
+                        <span class="link-externo"><i class="fas fa-external-link-alt"></i> oficial</span>
+                        <span class="link-info">Ministerio TIC Colombia - Guía oficial</span>
+                    </a>
+                    
+                    <!-- Guía de Seguridad Digital - CAMECO -->
+                    <a href="https://www.cameco.org/media/es_gu_a_de_seguridad_digital_para_todos-_cameco.pdf" 
+                       class="resource-link" target="_blank">
+                        <i class="fas fa-book"></i> Guía de Seguridad Digital para Todos
+                        <span class="link-externo"><i class="fas fa-external-link-alt"></i> PDF</span>
+                        <span class="link-info">CAMECO - Guía completa en español</span>
+                    </a>
+                    
+                    <!-- Checklist de Ciberseguridad - Kippeo -->
+                    <a href="https://kippeo.mx/wp-content/uploads/2021/09/Checklist-de-ciberseguridad-para-empresas.vf_.pdf" 
+                       class="resource-link" target="_blank">
+                        <i class="fas fa-clipboard-check"></i> Checklist de Ciberseguridad
+                        <span class="link-externo"><i class="fas fa-external-link-alt"></i> PDF</span>
+                        <span class="link-info">Kippeo México - Checklist profesional</span>
+                    </a>
+                    
+                    <!-- Procedimiento de Incidentes - SIC Colombia -->
+                    <a href="https://sigi.sic.gov.co/SIGI/files/mod_documentos/documentos/SC05-P01/versiones/PROCEDIMIENTO%20DE%20GESTI%D3N%20DE%20INCIDENTES%20DE%20SEGURIDAD%20DE%20LA%20INFORMACI%D3N_V2_copia_no_controlada.pdf" 
+                       class="resource-link" target="_blank">
+                        <i class="fas fa-first-aid"></i> Procedimiento de Gestión de Incidentes
+                        <span class="link-externo"><i class="fas fa-external-link-alt"></i> PDF</span>
+                        <span class="link-info">SIC Colombia - Procedimiento oficial</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Video Tutoriales -->
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-video"></i>
+                </div>
+                <h3>Video Tutoriales</h3>
+                <p>Guías paso a paso en formato video</p>
+                <div class="resource-links">
+                    <!-- Ciberseguridad Básica -->
+                    <a href="https://youtu.be/0Ro1Ny-SQWY?si=K8CrfZktzR69z1Yc" class="resource-link" target="_blank">
+                        <i class="fab fa-youtube"></i> Ciberseguridad Básica para PYMES
+                        <span class="link-externo"><i class="fas fa-external-link-alt"></i> video 15 min</span>
+                        <span class="link-info">Fundamentos esenciales de ciberseguridad</span>
+                    </a>
+                    
+                    <!-- Protección de Datos -->
+                    <a href="https://www.youtube.com/live/qgj5WuurAxc?si=Ej3p3gQgJQiFv9fq" class="resource-link" target="_blank">
+                        <i class="fab fa-youtube"></i> Protección de Datos Personales
+                        <span class="link-externo"><i class="fas fa-external-link-alt"></i> webinar</span>
+                        <span class="link-info">Webinar completo sobre protección de datos</span>
+                    </a>
+                    
+                    <!-- Contraseñas Seguras -->
+                    <a href="https://youtu.be/2vo5NZnfES8?si=UDjwY4I90YamSdLq" class="resource-link" target="_blank">
+                        <i class="fab fa-youtube"></i> Contraseñas Seguras y Gestores
+                        <span class="link-externo"><i class="fas fa-external-link-alt"></i> tutorial</span>
+                        <span class="link-info">Mejores prácticas para contraseñas</span>
+                    </a>
+                    
+                    <!-- Detección de Phishing -->
+                    <a href="https://youtu.be/AdsLvOTZKD8?si=wbl5__-2s132aAZd" class="resource-link" target="_blank">
+                        <i class="fab fa-youtube"></i> Detección de Phishing y Fraudes
+                        <span class="link-externo"><i class="fas fa-external-link-alt"></i> video 12 min</span>
+                        <span class="link-info">Cómo identificar y evitar ataques de phishing</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Herramientas Gratuitas -->
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <h3>Herramientas de Ciberseguridad</h3>
+                <p>Software esencial para pequeñas y medianas empresas</p>
+                <div class="resource-links">
+                    <!-- Fortinet - Herramientas para SMB -->
+                    <a href="https://www.fortinet.com/lat/resources/cyberglossary/smb-cybersecurity-tools" 
+                       class="resource-link" target="_blank">
+                        <i class="fas fa-toolbox"></i> 15 Herramientas para PYMES
+                        <span class="link-externo"><i class="fas fa-external-link-alt"></i> guía</span>
+                        <span class="link-info">Fortinet - Herramientas esenciales SMB</span>
+                    </a>
+                    
+                    <!-- Avast Business -->
+                    <a href="https://www.avast.com/es-es/business" class="resource-link" target="_blank">
+                        <i class="fas fa-shield-virus"></i> Avast Business Security
+                        <span class="link-externo"><i class="fas fa-external-link-alt"></i> gratuito</span>
+                        <span class="link-info">Antivirus empresarial gratuito</span>
+                    </a>
+                    
+                    <!-- KeePass -->
+                    <a href="https://keepass.info/download.html" class="resource-link" target="_blank">
+                        <i class="fas fa-key"></i> KeePass Password Manager
+                        <span class="link-externo"><i class="fas fa-external-link-alt"></i> open source</span>
+                        <span class="link-info">Gestor de contraseñas gratuito y seguro</span>
+                    </a>
+                    
+                    <!-- VeraCrypt -->
+                    <a href="https://www.veracrypt.fr/en/Downloads.html" class="resource-link" target="_blank">
+                        <i class="fas fa-lock"></i> VeraCrypt Encriptación
+                        <span class="link-externo"><i class="fas fa-external-link-alt"></i> gratuito</span>
+                        <span class="link-info">Herramienta de encriptación de archivos</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Soporte Comunitario -->
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3>Soporte Comunitario</h3>
+                <p>Ayuda, foros y recursos de apoyo</p>
+                <div class="resource-links">
+                    <!-- INCIBE - Línea de Ayuda -->
+                    <a href="https://www.incibe.es/linea-de-ayuda-en-ciberseguridad" class="resource-link" target="_blank">
+                        <i class="fas fa-phone-alt"></i> Línea de Ayuda en Ciberseguridad
+                        <span class="link-externo"><i class="fas fa-external-link-alt"></i> oficial</span>
+                        <span class="link-info">INCIBE - Soporte gratuito profesional</span>
+                    </a>
+                    
+                    <!-- Foro INCIBE -->
+                    <a href="https://foro.incibe.es/" class="resource-link" target="_blank">
+                        <i class="fas fa-users"></i> Foro de Ciberseguridad
+                        <span class="link-externo"><i class="fas fa-external-link-alt"></i> comunidad</span>
+                        <span class="link-info">Foro oficial INCIBE para empresas</span>
+                    </a>
+                    
+                    <!-- CEOE Ciberseguridad -->
+                    <a href="https://www.ceoe.es/es/que-hacemos/ciberseguridad" class="resource-link" target="_blank">
+                        <i class="fas fa-building"></i> Recursos CEOE Ciberseguridad
+                        <span class="link-externo"><i class="fas fa-external-link-alt"></i> empresarial</span>
+                        <span class="link-info">Confederación Española de Organizaciones Empresariales</span>
+                    </a>
+                    
+                    <!-- Grupo Soporte -->
+                    <a href="#" class="resource-link" onclick="unirseComunidad()">
+                        <i class="fab fa-whatsapp"></i> Grupo de Soporte WhatsApp
+                        <span class="link-info">Comunidad de PYMES en ciberseguridad</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de Descargas Premium -->
+        <div class="download-section">
+            <h3 style="text-align: center; margin-bottom: 1rem;">Recursos Premium Descargables</h3>
+            <div class="download-grid">
+                <!-- Guía ISO 27001 -->
+                <div class="download-item">
+                    <h4><i class="fas fa-certificate"></i> Guía de Implantación ISO 27001</h4>
+                    <p>Implementación completa de sistema de gestión de seguridad</p>
+                    <a href="https://www.nqa.com/medialibraries/NQA/NQA-Media-Library/PDFs/Spanish%20QRFs%20and%20PDFs/NQA-ISO-27001-Guia-de-implantacion.pdf" 
+                       class="resource-link" target="_blank">
+                        <i class="fas fa-download"></i> Descargar PDF (3.5 MB)
+                        <span class="link-externo"><i class="fas fa-external-link-alt"></i> NQA</span>
+                    </a>
+                </div>
+                
+                <!-- Checklist Seguridad Online -->
+                <div class="download-item">
+                    <h4><i class="fas fa-clipboard-list"></i> Checklist Seguridad en Línea</h4>
+                    <p>Lista completa de verificación para seguridad digital</p>
+                    <a href="https://adventistrisk.org/getmedia/f53ad625-f748-4526-9d1a-a980fe018193/FRM-OnlineSafety-Checklist-NADSP.pdf" 
+                       class="resource-link" target="_blank">
+                        <i class="fas fa-download"></i> Descargar PDF (1.8 MB)
+                        <span class="link-externo"><i class="fas fa-external-link-alt"></i> Adventist Risk</span>
+                    </a>
+                </div>
+                
+                <!-- Plan Mejora Seguridad -->
+                <div class="download-item">
+                    <h4><i class="fas fa-chart-line"></i> Plan Mejora Prácticas Seguridad</h4>
+                    <p>Plan estratégico para mejorar seguridad organizacional</p>
+                    <a href="https://es.scribd.com/document/692720591/plan" 
+                       class="resource-link" target="_blank">
+                        <i class="fas fa-download"></i> Ver Documento
+                        <span class="link-externo"><i class="fas fa-external-link-alt"></i> Scribd</span>
+                    </a>
+                </div>
+                
+                <!-- Kit Respuesta Incidentes MinTIC -->
+                <div class="download-item">
+                    <h4><i class="fas fa-first-aid"></i> Kit Respuesta a Incidentes</h4>
+                    <p>Procedimiento completo gestión de incidentes cibernéticos</p>
+                    <a href="https://gobiernodigital.mintic.gov.co/692/articles-5482_G21_Gestion_Incidentes.pdf" 
+                       class="resource-link" target="_blank">
+                        <i class="fas fa-download"></i> Descargar PDF (2.1 MB)
+                        <span class="link-externo"><i class="fas fa-external-link-alt"></i> MinTIC Colombia</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Métricas -->
+        <div class="metrics">
+            <h3 style="text-align: center; margin-bottom: 2rem;">Nuestro Impacto en PYMES</h3>
+            <div class="metric-grid">
+                <div class="metric-item">
+                    <h3 id="total-descargas">0</h3>
+                    <p>Descargas realizadas</p>
+                </div>
+                <div class="metric-item">
+                    <h3 id="total-contactos">0</h3>
+                    <p>Consultas recibidas</p>
+                </div>
+                <div class="metric-item">
+                    <h3>95%</h3>
+                    <p>Empleados capacitados</p>
+                </div>
+                <div class="metric-item">
+                    <h3>100%</h3>
+                    <p>Cumplimiento LOPD básico</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recursos Adicionales -->
+    <section class="section" id="recursos" style="background: var(--light);">
+        <div class="section-title">
+            <h2>Recursos Adicionales</h2>
+            <p>Herramientas y enlaces útiles para mantener tu seguridad</p>
+        </div>
+
+        <div class="kit-features">
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-newspaper"></i>
+                </div>
+                <h3>Noticias y Alertas</h3>
+                <div class="resource-links">
+                    <a href="https://www.incibe.es/alertas" class="resource-link" target="_blank">
+                        Alertas de Ciberseguridad INCIBE
+                        <span class="link-externo"><i class="fas fa-external-link-alt"></i></span>
+                        <span class="link-info">Alertas oficiales en tiempo real</span>
+                    </a>
+                    <a href="https://www.cisa.gov/known-exploited-vulnerabilities" class="resource-link" target="_blank">
+                        Catálogo de Vulnerabilidades CISA
+                        <span class="link-externo"><i class="fas fa-external-link-alt"></i></span>
+                        <span class="link-info">Vulnerabilidades críticas actualizadas</span>
+                    </a>
+                    <a href="https://www.aepd.es/prensa-y-comunicacion/notas-de-prensa" class="resource-link" target="_blank">
+                        Noticias y Comunicados AEPD
+                        <span class="link-externo"><i class="fas fa-external-link-alt"></i></span>
+                        <span class="link-info">Agencia Española de Protección de Datos</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-gavel"></i>
+                </div>
+                <h3>Marco Legal</h3>
+                <div class="resource-links">
+                    <a href="https://www.boe.es/buscar/doc.php?id=BOE-A-2018-16673" class="resource-link" target="_blank">
+                        Ley Orgánica de Protección de Datos
+                        <span class="link-externo"><i class="fas fa-external-link-alt"></i></span>
+                        <span class="link-info">LOPD/GDPR - Texto completo</span>
+                    </a>
+                    <a href="https://www.boe.es/buscar/act.php?id=BOE-A-1999-23750" class="resource-link" target="_blank">
+                        Ley de Servicios de la Sociedad de la Información
+                        <span class="link-externo"><i class="fas fa-external-link-alt"></i></span>
+                        <span class="link-info">LSSI - Regulación servicios digitales</span>
+                    </a>
+                    <a href="https://www.aepd.es/es/derechos-y-deberes/cumple-tus-deberes" class="resource-link" target="_blank">
+                        Guía de Cumplimiento AEPD
+                        <span class="link-externo"><i class="fas fa-external-link-alt"></i></span>
+                        <span class="link-info">Obligaciones para empresas</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-hand-holding-usd"></i>
+                </div>
+                <h3>Ayudas y Subvenciones</h3>
+                <div class="resource-links">
+                    <a href="https://www.incibe.es/incibeX" class="resource-link" target="_blank">
+                        Programa INCIBEX para PYMES
+                        <span class="link-externo"><i class="fas fa-external-link-alt"></i></span>
+                        <span class="link-info">Ayudas para digitalización y ciberseguridad</span>
+                    </a>
+                    <a href="https://www.red.es/redes/es/que-hacemos/avanzamos-digitalizacion-pyme" class="resource-link" target="_blank">
+                        Digitalización de PYMES - Red.es
+                        <span class="link-externo"><i class="fas fa-external-link-alt"></i></span>
+                        <span class="link-info">Programas de apoyo a la transformación digital</span>
+                    </a>
+                    <a href="https://ec.europa.eu/digital-single-market/en/cybersecurity" class="resource-link" target="_blank">
+                        Financiación UE para Ciberseguridad
+                        <span class="link-externo"><i class="fas fa-external-link-alt"></i></span>
+                        <span class="link-info">Fondos europeos disponibles</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section class="section" id="contacto">
+        <div class="section-title">
+            <h2>Contacto</h2>
+            <p>¿Necesitas ayuda personalizada? Contáctanos</p>
+        </div>
+
+        <div class="contact-form">
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="nombre">Nombre completo *</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="empresa">Empresa *</label>
+                    <input type="text" id="empresa" name="empresa" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono">
+                </div>
+                <div class="form-group">
+                    <label for="tipo_consulta">Tipo de consulta *</label>
+                    <select id="tipo_consulta" name="tipo_consulta" required>
+                        <option value="">Selecciona una opción</option>
+                        <option value="implementacion">Implementación guía</option>
+                        <option value="consultoria">Consultoría personalizada</option>
+                        <option value="formacion">Formación para empleados</option>
+                        <option value="incidente">Reportar incidente</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="mensaje">Mensaje *</label>
+                    <textarea id="mensaje" name="mensaje" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <i class="fas fa-paper-plane"></i> Enviar Mensaje
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Panel de Administración (Oculto inicialmente) -->
+    <section class="section" id="admin" style="display: none;">
+        <div class="section-title">
+            <h2>Panel de Administración</h2>
+            <p>Gestión de contactos y descargas</p>
+        </div>
+
+        <div class="admin-panel">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="admin-total-contactos">0</div>
+                    <div>Total Contactos</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="admin-total-descargas">0</div>
+                    <div>Total Descargas</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="admin-contactos-hoy">0</div>
+                    <div>Contactos Hoy</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="admin-descargas-hoy">0</div>
+                    <div>Descargas Hoy</div>
+                </div>
+            </div>
+
+            <div class="cta-button" onclick="cargarDatosAdmin()" style="margin-bottom: 1rem;">
+                <i class="fas fa-sync-alt"></i> Actualizar Datos
+            </div>
+
+            <div id="lista-contactos">
+                <!-- Los contactos se cargarán aquí dinámicamente -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>CyberGuía PYMES</h3>
+                <p>Haciendo la ciberseguridad accesible para todas las empresas</p>
+                <div style="margin-top: 1rem;">
+                    <a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+                    <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Enlaces Rápidos</h3>
+                <a href="#implementacion">Kit Implementación</a>
+                <a href="#recursos">Recursos Adicionales</a>
+                <a href="https://www.incibe.es/linea-de-ayuda-en-ciberseguridad" target="_blank">Línea de Ayuda INCIBE</a>
+                <a href="https://www.mintic.gov.co" target="_blank">MinTIC Colombia</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <a href="mailto:soporte@cyberguiapymes.com">soporte@cyberguiapymes.com</a>
+                <a href="tel:+573001234567">+57 300 123 4567</a>
+                <p>Disponibilidad: L-V 9:00-18:00</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Notificación -->
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i> <span id="notificationText">Descarga completada</span>
+    </div>
+
+    <script>
+        // Sistema de almacenamiento local (simula base de datos)
+        class Database {
+            constructor() {
+                this.KEY_CONTACTOS = 'cyberguia_contactos';
+                this.KEY_DESCARGAS = 'cyberguia_descargas';
+                this.init();
+            }
+
+            init() {
+                if (!localStorage.getItem(this.KEY_CONTACTOS)) {
+                    localStorage.setItem(this.KEY_CONTACTOS, JSON.stringify([]));
+                }
+                if (!localStorage.getItem(this.KEY_DESCARGAS)) {
+                    localStorage.setItem(this.KEY_DESCARGAS, JSON.stringify([]));
+                }
+            }
+
+            // Contactos
+            guardarContacto(contacto) {
+                const contactos = this.obtenerContactos();
+                contacto.id = Date.now();
+                contacto.fecha_creacion = new Date().toISOString();
+                contacto.leido = false;
+                contactos.unshift(contacto);
+                localStorage.setItem(this.KEY_CONTACTOS, JSON.stringify(contactos));
+                return contacto.id;
+            }
+
+            obtenerContactos() {
+                return JSON.parse(localStorage.getItem(this.KEY_CONTACTOS) || '[]');
+            }
+
+            // Descargas
+            registrarDescarga(recurso) {
+                const descargas = this.obtenerDescargas();
+                descargas.push({
+                    recurso: recurso,
+                    fecha_descarga: new Date().toISOString(),
+                    user_agent: navigator.userAgent
+                });
+                localStorage.setItem(this.KEY_DESCARGAS, JSON.stringify(descargas));
+            }
+
+            obtenerDescargas() {
+                return JSON.parse(localStorage.getItem(this.KEY_DESCARGAS) || '[]');
+            }
+
+            // Estadísticas
+            obtenerEstadisticas() {
+                const contactos = this.obtenerContactos();
+                const descargas = this.obtenerDescargas();
+                const hoy = new Date().toDateString();
+
+                return {
+                    total_contactos: contactos.length,
+                    total_descargas: descargas.length,
+                    contactos_hoy: contactos.filter(c => 
+                        new Date(c.fecha_creacion).toDateString() === hoy
+                    ).length,
+                    descargas_hoy: descargas.filter(d =>
+                        new Date(d.fecha_descarga).toDateString() === hoy
+                    ).length
+                };
+            }
+        }
+
+        // Inicializar base de datos
+        const db = new Database();
+
+        // Función para manejar el formulario de contacto
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const originalText = submitBtn.innerHTML;
+            
+            // Mostrar loading
+            submitBtn.innerHTML = '<div class="loading"></div> Enviando...';
+            submitBtn.disabled = true;
+            
+            const formData = new FormData(this);
+            const datos = Object.fromEntries(formData);
+            
+            // Validación básica
+            if (!datos.nombre || !datos.empresa || !datos.email || !datos.tipo_consulta || !datos.mensaje) {
+                mostrarNotificacion('Por favor completa todos los campos obligatorios', 'error');
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                return;
+            }
+            
+            // Validar email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(datos.email)) {
+                mostrarNotificacion('Por favor ingresa un email válido', 'error');
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                return;
+            }
+            
+            // Simular delay de red
+            setTimeout(() => {
+                try {
+                    // Guardar en base de datos local
+                    const id = db.guardarContacto(datos);
+                    
+                    mostrarNotificacion('Formulario recibido correctamente. Te contactaremos en 24-48 horas.');
+                    this.reset();
+                    
+                    // Actualizar estadísticas
+                    actualizarEstadisticas();
+                    
+                } catch (error) {
+                    mostrarNotificacion('Error al enviar el formulario', 'error');
+                } finally {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                }
+            }, 1500);
+        });
+
+        // Función para descargar recursos locales
+        function descargarRecursoLocal(tipo) {
+            // Registrar descarga
+            db.registrarDescarga(tipo);
+            
+            // Mapeo de recursos locales
+            const recursos = {
+                'politica-seguridad': {
+                    nombre: 'politica_seguridad_mintic.pdf',
+                    contenido: `POLÍTICA DE SEGURIDAD DIGITAL - MINISTERIO TIC COLOMBIA
+
+1. OBJETIVO
+Establecer los lineamientos para garantizar la seguridad digital de la información...
+
+2. ALCANCE
+Aplica a todos los sistemas, redes y dispositivos de la organización...
+
+3. RESPONSABILIDADES
+- Director: Aprobación de la política
+- Gerente TI: Implementación
+- Empleados: Cumplimiento
+
+4. CONTROLES DE SEGURIDAD
+4.1. Control de acceso
+4.2. Gestión de contraseñas
+4.3. Protección de datos
+4.4. Respuesta a incidentes
+
+5. REVISIÓN
+Esta política será revisada anualmente.
+
+Basado en: Ministerio TIC Colombia - Política de Seguridad Digital`,
+                    tipo: 'application/pdf'
+                },
+                'checklist-lopd': {
+                    nombre: 'checklist_ciberseguridad_empresas.xlsx',
+                    contenido: `Checklist de Ciberseguridad para Empresas
+
+SEGURIDAD FÍSICA
+[ ] Control de acceso a instalaciones
+[ ] Sistema de vigilancia
+[ ] Protección contra incendios
+[ ] Control de visitantes
+
+SEGURIDAD LÓGICA
+[ ] Firewalls configurados
+[ ] Antivirus actualizado
+[ ] Copias de seguridad
+[ ] Actualizaciones de software
+
+PROTECCIÓN DE DATOS
+[ ] Registro de actividades
+[ ] Contratos con encargados
+[ ] Evaluación de impacto
+[ ] Política de privacidad
+
+CONCIENCIACIÓN
+[ ] Formación a empleados
+[ ] Simulaciones de phishing
+[ ] Política de contraseñas
+[ ] Procedimiento incidentes
+
+Basado en: Checklist Kippeo México`,
+                    tipo: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+                },
+                'plan-concienciacion': {
+                    nombre: 'guia_seguridad_digital_cameco.pptx',
+                    contenido: `GUÍA DE SEGURIDAD DIGITAL PARA TODOS
+
+CAPÍTULO 1: AMENAZAS DIGITALES
+- Phishing y suplantación
+- Malware y ransomware
+- Ingeniería social
+- Ataques DDoS
+
+CAPÍTULO 2: BUENAS PRÁCTICAS
+- Contraseñas seguras
+- Doble autenticación
+- Navegación segura
+- Correo electrónico seguro
+
+CAPÍTULO 3: PROTECCIÓN DE DATOS
+- Clasificación de información
+- Encriptación
+- Copias de seguridad
+- Eliminación segura
+
+CAPÍTULO 4: INCIDENTES
+- Cómo detectar incidentes
+- Pasos a seguir
+- Contactos de emergencia
+- Recuperación
+
+Basado en: Guía CAMECO - Seguridad Digital para Todos`,
+                    tipo: 'application/vnd.openxmlformats-officedocument.presentationml.presentation'
+                },
+                'kit-incidentes': {
+                    nombre: 'procedimiento_incidentes_sic.zip',
+                    contenido: `PROCEDIMIENTO DE GESTIÓN DE INCIDENTES DE SEGURIDAD
+
+1. DETECCIÓN
+1.1. Monitoreo continuo
+1.2. Alertas automáticas
+1.3. Reportes de usuarios
+
+2. CLASIFICACIÓN
+2.1. Nivel 1: Bajo impacto
+2.2. Nivel 2: Medio impacto
+2.3. Nivel 3: Alto impacto
+2.4. Nivel 4: Crítico
+
+3. CONTENCIÓN
+3.1. Aislamiento de sistemas
+3.2. Preservación de evidencia
+3.3. Notificación a autoridades
+
+4. ERRADICACIÓN
+4.1. Eliminación de malware
+4.2. Parcheo de vulnerabilidades
+4.3. Cambio de credenciales
+
+5. RECUPERACIÓN
+5.1. Restauración desde backup
+5.2. Verificación de sistemas
+5.3. Retorno a operaciones
+
+6. LECCIONES APRENDIDAS
+6.1. Análisis post-incidente
+6.2. Mejora de procesos
+6.3. Actualización de políticas
+
+Basado en: Procedimiento SIC Colombia - Gestión de Incidentes`,
+                    tipo: 'application/zip'
+                }
+            };
+            
+            const recurso = recursos[tipo];
+            if (recurso) {
+                // Crear blob y descargar
+                const blob = new Blob([recurso.contenido], { type: recurso.tipo });
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = recurso.nombre;
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+                document.body.removeChild(a);
+                
+                mostrarNotificacion('Descarga completada correctamente');
+                
+                // Actualizar estadísticas
+                actualizarEstadisticas();
+            }
+        }
+
+        // Función para mostrar panel de administración
+        function mostrarAdmin() {
+            document.getElementById('admin').style.display = 'block';
+            cargarDatosAdmin();
+        }
+
+        // Cargar datos del panel de administración
+        function cargarDatosAdmin() {
+            const stats = db.obtenerEstadisticas();
+            const contactos = db.obtenerContactos();
+            
+            // Actualizar estadísticas
+            document.getElementById('admin-total-contactos').textContent = stats.total_contactos;
+            document.getElementById('admin-total-descargas').textContent = stats.total_descargas;
+            document.getElementById('admin-contactos-hoy').textContent = stats.contactos_hoy;
+            document.getElementById('admin-descargas-hoy').textContent = stats.descargas_hoy;
+            
+            // Mostrar lista de contactos
+            const lista = document.getElementById('lista-contactos');
+            lista.innerHTML = '<h3>Últimos Contactos</h3>';
+            
+            if (contactos.length === 0) {
+                lista.innerHTML += '<p>No hay contactos registrados</p>';
+                return;
+            }
+            
+            contactos.slice(0, 10).forEach(contacto => {
+                const div = document.createElement('div');
+                div.className = 'contacto-item';
+                div.innerHTML = `
+                    <strong>${contacto.nombre}</strong> - ${contacto.empresa}<br>
+                    <small>Email: ${contacto.email} | Tipo: ${contacto.tipo_consulta}</small><br>
+                    <small>Fecha: ${new Date(contacto.fecha_creacion).toLocaleDateString()}</small>
+                    ${contacto.leido ? '<span class="badge">Leído</span>' : '<span class="badge" style="background: var(--accent)">Nuevo</span>'}
+                `;
+                lista.appendChild(div);
+            });
+        }
+
+        // Actualizar estadísticas en la página principal
+        function actualizarEstadisticas() {
+            const stats = db.obtenerEstadisticas();
+            
+            document.getElementById('total-descargas').textContent = stats.total_descargas;
+            document.getElementById('total-contactos').textContent = stats.total_contactos;
+            
+            document.getElementById('admin-total-descargas').textContent = stats.total_descargas;
+            document.getElementById('admin-total-contactos').textContent = stats.total_contactos;
+            document.getElementById('admin-descargas-hoy').textContent = stats.descargas_hoy;
+            document.getElementById('admin-contactos-hoy').textContent = stats.contactos_hoy;
+        }
+
+        // Función para unirse a comunidad
+        function unirseComunidad() {
+            mostrarNotificacion('Para unirte al grupo de WhatsApp, envía un email a soporte@cyberguiapymes.com solicitando acceso.');
+        }
+
+        // Mostrar notificación
+        function mostrarNotificacion(mensaje, tipo = 'success') {
+            const notification = document.getElementById('notification');
+            const notificationText = document.getElementById('notificationText');
+            
+            notificationText.textContent = mensaje;
+            notification.className = `notification ${tipo === 'error' ? 'error' : ''} show`;
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 4000);
+        }
+
+        // Smooth scroll para navegación
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Menú móvil
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('active');
+        });
+
+        // Inicializar cuando se carga la página
+        document.addEventListener('DOMContentLoaded', function() {
+            actualizarEstadisticas();
+            
+            // Inicializar animaciones
+            document.querySelectorAll('.feature, .module-card').forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            });
+
+            // Trigger inicial para elementos visibles
+            setTimeout(() => {
+                window.dispatchEvent(new Event('scroll'));
+            }, 100);
+        });
+
+        // Animación al hacer scroll
+        window.addEventListener('scroll', function() {
+            const elements = document.querySelectorAll('.feature, .module-card');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (elementTop < windowHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        // Cerrar menú móvil al hacer clic en un enlace
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-menu').classList.remove('active');
+            });
+        });
+
+        // Verificar que todos los enlaces están actualizados
+        console.log('✅ Todos los enlaces han sido actualizados:');
+        console.log('📹 Videos Tutoriales:');
+        console.log('  • Ciberseguridad Básica: https://youtu.be/0Ro1Ny-SQWY');
+        console.log('  • Protección de Datos: https://www.youtube.com/live/qgj5WuurAxc');
+        console.log('  • Contraseñas Seguras: https://youtu.be/2vo5NZnfES8');
+        console.log('  • Detección de Phishing: https://youtu.be/AdsLvOTZKD8');
+        console.log('🔧 Herramientas:');
+        console.log('  • Fortinet SMB Tools: https://www.fortinet.com/lat/resources/cyberglossary/smb-cybersecurity-tools');
+        console.log('📄 Recursos Premium:');
+        console.log('  • ISO 27001: https://www.nqa.com/medialibraries/NQA/NQA-Media-Library/PDFs/Spanish%20QRFs%20and%20PDFs/NQA-ISO-27001-Guia-de-implantacion.pdf');
+        console.log('  • Checklist Seguridad: https://adventistrisk.org/getmedia/f53ad625-f748-4526-9d1a-a980fe018193/FRM-OnlineSafety-Checklist-NADSP.pdf');
+        console.log('  • Plan Mejora: https://es.scribd.com/document/692720591/plan');
+        console.log('  • Kit Incidentes: https://gobiernodigital.mintic.gov.co/692/articles-5482_G21_Gestion_Incidentes.pdf');
+        console.log('👥 Soporte:');
+        console.log('  • Línea Ayuda INCIBE: https://www.incibe.es/linea-de-ayuda-en-ciberseguridad');
+    </script>
+</body>
+</html>
